@@ -12,6 +12,7 @@ const Info = () => {
   const jobTitleCNTT = ["Frontend Developer", "Backend Developer"];
   const workField = ["Thương mại", "Dịch vụ", "Sản xuất"];
   const [wordFieldSelected, setWordFieldSelected] = useState([]);
+  const [isSubmit, setIsSubmit] = useState(false);
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -29,6 +30,7 @@ const Info = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmit(true);
     if (
       form.firstName === "" ||
       form.lastName === "" ||
@@ -41,14 +43,13 @@ const Info = () => {
       form.jobTitle === "" ||
       form.wordField.length === 0
     ) {
-      setShowAlert(true);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 2000);
       return;
     }
     console.log(form);
-    alert("Submit success");
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
   };
 
   return (
@@ -63,12 +64,15 @@ const Info = () => {
               <Form.Control
                 type="text"
                 placeholder="Nhập họ và tên đệm"
-                required
                 value={form.firstName}
                 onChange={(e) =>
                   setForm({ ...form, firstName: e.target.value })
                 }
+                isInvalid={form.firstName === "" && isSubmit ? true : false}
               />
+              <Form.Control.Feedback type="invalid">
+                Vui lòng nhập họ và tên đệm
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
           <Col>
@@ -79,8 +83,11 @@ const Info = () => {
                 placeholder="Nhập tên"
                 value={form.lastName}
                 onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-                required
+                isInvalid={form.lastName === "" && isSubmit ? true : false}
               />
+              <Form.Control.Feedback type="invalid">
+                Vui lòng nhập tên
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Row>
@@ -93,7 +100,7 @@ const Info = () => {
               <Form.Select
                 value={form.city}
                 onChange={(e) => setForm({ ...form, city: e.target.value })}
-                required
+                isInvalid={form.city === "" && isSubmit ? true : false}
               >
                 <option value={null}>Chọn thành phố</option>
                 {city.map((item, index) => (
@@ -102,6 +109,9 @@ const Info = () => {
                   </option>
                 ))}
               </Form.Select>
+              <Form.Control.Feedback type="invalid">
+                Vui lòng chọn thành phố
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
           <Col>
@@ -110,7 +120,7 @@ const Info = () => {
               <Form.Select
                 value={form.district}
                 onChange={(e) => setForm({ ...form, district: e.target.value })}
-                required
+                isInvalid={form.district === "" && isSubmit ? true : false}
               >
                 <option value={null}>Chọn quận</option>
                 {form.city === "Tp HCM"
@@ -125,6 +135,9 @@ const Info = () => {
                       </option>
                     ))}
               </Form.Select>
+              <Form.Control.Feedback type="invalid">
+                Vui lòng chọn quận
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Row>
@@ -137,7 +150,7 @@ const Info = () => {
               <Form.Select
                 value={form.cityBorn}
                 onChange={(e) => setForm({ ...form, cityBorn: e.target.value })}
-                required
+                isInvalid={form.cityBorn === "" && isSubmit ? true : false}
               >
                 <option value={null}>Chọn thành phố</option>
                 {city.map((item, index) => (
@@ -146,6 +159,9 @@ const Info = () => {
                   </option>
                 ))}
               </Form.Select>
+              <Form.Control.Feedback type="invalid">
+                Vui lòng chọn thành phố
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Row>
@@ -155,7 +171,7 @@ const Info = () => {
           <Form.Select
             value={form.yearOfBirth}
             onChange={(e) => setForm({ ...form, yearOfBirth: e.target.value })}
-            required
+            isInvalid={form.yearOfBirth === "" && isSubmit ? true : false}
           >
             <option value={null}>Chọn năm sinh</option>
             {Array.from({ length: 124 }, (_, i) => i + 1900).map(
@@ -166,6 +182,9 @@ const Info = () => {
               )
             )}
           </Form.Select>
+          <Form.Control.Feedback type="invalid">
+            Vui lòng chọn năm sinh
+          </Form.Control.Feedback>
         </Form.Group>
 
         <h5>Trình độ học vấn</h5>
@@ -174,7 +193,7 @@ const Info = () => {
           <Form.Select
             value={form.school}
             onChange={(e) => setForm({ ...form, school: e.target.value })}
-            required
+            isInvalid={form.school === "" && isSubmit ? true : false}
           >
             <option value={null}>Chọn trình độ</option>
             {school.map((item, index) => (
@@ -183,6 +202,9 @@ const Info = () => {
               </option>
             ))}
           </Form.Select>
+          <Form.Control.Feedback type="invalid">
+            Vui lòng chọn trình độ
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="major">
@@ -190,7 +212,7 @@ const Info = () => {
           <Form.Select
             value={form.major}
             onChange={(e) => setForm({ ...form, major: e.target.value })}
-            required
+            isInvalid={form.major === "" && isSubmit ? true : false}
           >
             <option value={null}>Chọn chuyên ngành</option>
             {major.map((item, index) => (
@@ -199,6 +221,9 @@ const Info = () => {
               </option>
             ))}
           </Form.Select>
+          <Form.Control.Feedback type="invalid">
+            Vui lòng chọn chuyên ngành
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="jobTitle">
@@ -206,7 +231,6 @@ const Info = () => {
           <Form.Select
             value={form.jobTitle}
             onChange={(e) => setForm({ ...form, jobTitle: e.target.value })}
-            required
           >
             <option value={null}>Chọn chức danh</option>
             {form.major === "Kinh doanh dịch vụ"
@@ -221,6 +245,9 @@ const Info = () => {
                   </option>
                 ))}
           </Form.Select>
+          <Form.Control.Feedback type="invalid">
+            Vui lòng chọn chức danh
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="wordField">
@@ -235,14 +262,22 @@ const Info = () => {
           <Form.Select
             onChange={(e) => {
               setWordFieldSelected([
-                ...new Set([...wordFieldSelected, e.target.value]),
+                ...new Set(
+                  [...wordFieldSelected, e.target.value].filter(
+                    (item) => item !== "Chọn lĩnh vực làm việc"
+                  )
+                ),
               ]);
               setForm({
                 ...form,
-                wordField: new Set([...wordFieldSelected, e.target.value]),
+                wordField: new Set(
+                  [...wordFieldSelected, e.target.value].filter(
+                    (item) => item !== "Chọn lĩnh vực làm việc"
+                  )
+                ),
               });
             }}
-            required
+            isInvalid={form.wordField.length === 0 && isSubmit ? true : false}
           >
             <option value={null}>Chọn lĩnh vực làm việc</option>
             {workField.map((item, index) => (
@@ -251,14 +286,17 @@ const Info = () => {
               </option>
             ))}
           </Form.Select>
+          <Form.Control.Feedback type="invalid">
+            Vui lòng chọn lĩnh vực làm việc
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Button variant="primary" type="submit" className="btn-submit">
           Lưu
         </Button>
       </Form>
-      <Alert variant="danger" className="alert" show={showAlert}>
-        Vui lòng nhập đủ thông tin !!!
+      <Alert variant="success" className="alert" show={showAlert}>
+        Dữ liệu đã được cập nhật
       </Alert>
     </div>
   );
