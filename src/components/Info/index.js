@@ -95,7 +95,7 @@ const Info = () => {
                 onChange={(e) => setForm({ ...form, city: e.target.value })}
                 required
               >
-                <option>Chọn thành phố</option>
+                <option value={null}>Chọn thành phố</option>
                 {city.map((item, index) => (
                   <option value={item} key={index}>
                     {item}
@@ -112,7 +112,7 @@ const Info = () => {
                 onChange={(e) => setForm({ ...form, district: e.target.value })}
                 required
               >
-                <option>Chọn quận</option>
+                <option value={null}>Chọn quận</option>
                 {form.city === "Tp HCM"
                   ? districtHCM.map((item, index) => (
                       <option value={item} key={index}>
@@ -139,7 +139,7 @@ const Info = () => {
                 onChange={(e) => setForm({ ...form, cityBorn: e.target.value })}
                 required
               >
-                <option>Chọn thành phố</option>
+                <option value={null}>Chọn thành phố</option>
                 {city.map((item, index) => (
                   <option value={item} key={index}>
                     {item}
@@ -157,8 +157,8 @@ const Info = () => {
             onChange={(e) => setForm({ ...form, yearOfBirth: e.target.value })}
             required
           >
-            <option>Chọn năm sinh</option>
-            {Array.from({ length: 150 }, (_, i) => i + 1900).map(
+            <option value={null}>Chọn năm sinh</option>
+            {Array.from({ length: 124 }, (_, i) => i + 1900).map(
               (item, index) => (
                 <option value={item} key={index}>
                   {item}
@@ -176,7 +176,7 @@ const Info = () => {
             onChange={(e) => setForm({ ...form, school: e.target.value })}
             required
           >
-            <option>Chọn trình độ</option>
+            <option value={null}>Chọn trình độ</option>
             {school.map((item, index) => (
               <option value={item} key={index}>
                 {item}
@@ -192,7 +192,7 @@ const Info = () => {
             onChange={(e) => setForm({ ...form, major: e.target.value })}
             required
           >
-            <option>Chọn chuyên ngành</option>
+            <option value={null}>Chọn chuyên ngành</option>
             {major.map((item, index) => (
               <option value={item} key={index}>
                 {item}
@@ -208,7 +208,7 @@ const Info = () => {
             onChange={(e) => setForm({ ...form, jobTitle: e.target.value })}
             required
           >
-            <option>Chọn chức danh</option>
+            <option value={null}>Chọn chức danh</option>
             {form.major === "Kinh doanh dịch vụ"
               ? jobTitleKDDV.map((item, index) => (
                   <option value={item} key={index}>
@@ -244,7 +244,7 @@ const Info = () => {
             }}
             required
           >
-            <option>Chọn lĩnh vực làm việc</option>
+            <option value={null}>Chọn lĩnh vực làm việc</option>
             {workField.map((item, index) => (
               <option value={item} key={index}>
                 {item}
