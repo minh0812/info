@@ -13,4 +13,10 @@
   .btn-submit {
     margin: 10px auto;
   }
+  .alert {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

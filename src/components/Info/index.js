@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Info.scss";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Alert, Button, Col, Form, Row } from "react-bootstrap";
 
 const Info = () => {
   const city = ["Tp HCM", "Đồng Nai"];
@@ -25,6 +25,8 @@ const Info = () => {
     wordField: [],
   });
 
+  const [showAlert, setShowAlert] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -39,7 +41,10 @@ const Info = () => {
       form.jobTitle === "" ||
       form.wordField.length === 0
     ) {
-      alert("Vui lòng nhập đầy đủ thông tin");
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
       return;
     }
     console.log(form);
@@ -252,6 +257,9 @@ const Info = () => {
           Lưu
         </Button>
       </Form>
+      <Alert variant="danger" className="alert" show={showAlert}>
+        Vui lòng nhập đủ thông tin !!!
+      </Alert>
     </div>
   );
 };
