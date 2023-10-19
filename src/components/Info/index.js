@@ -231,6 +231,7 @@ const Info = () => {
           <Form.Select
             value={form.jobTitle}
             onChange={(e) => setForm({ ...form, jobTitle: e.target.value })}
+            isInvalid={form.jobTitle === "" && isSubmit ? true : false}
           >
             <option value={null}>Chọn chức danh</option>
             {form.major === "Kinh doanh dịch vụ"
