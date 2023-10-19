@@ -100,7 +100,12 @@ const Info = () => {
               <Form.Select
                 value={form.city}
                 onChange={(e) => setForm({ ...form, city: e.target.value })}
-                isInvalid={form.city === "" && isSubmit ? true : false}
+                isInvalid={
+                  (form.city === "" || form.city === "Chọn thành phố") &&
+                  isSubmit
+                    ? true
+                    : false
+                }
               >
                 <option value={null}>Chọn thành phố</option>
                 {city.map((item, index) => (
@@ -120,7 +125,12 @@ const Info = () => {
               <Form.Select
                 value={form.district}
                 onChange={(e) => setForm({ ...form, district: e.target.value })}
-                isInvalid={form.district === "" && isSubmit ? true : false}
+                isInvalid={
+                  (form.district === "" || form.district === "Chọn quận") &&
+                  isSubmit
+                    ? true
+                    : false
+                }
               >
                 <option value={null}>Chọn quận</option>
                 {form.city === "Tp HCM"
@@ -150,7 +160,13 @@ const Info = () => {
               <Form.Select
                 value={form.cityBorn}
                 onChange={(e) => setForm({ ...form, cityBorn: e.target.value })}
-                isInvalid={form.cityBorn === "" && isSubmit ? true : false}
+                isInvalid={
+                  (form.cityBorn === "" ||
+                    form.cityBorn === "Chọn thành phố") &&
+                  isSubmit
+                    ? true
+                    : false
+                }
               >
                 <option value={null}>Chọn thành phố</option>
                 {city.map((item, index) => (
@@ -171,7 +187,13 @@ const Info = () => {
           <Form.Select
             value={form.yearOfBirth}
             onChange={(e) => setForm({ ...form, yearOfBirth: e.target.value })}
-            isInvalid={form.yearOfBirth === "" && isSubmit ? true : false}
+            isInvalid={
+              (form.yearOfBirth === "" ||
+                form.yearOfBirth === "Chọn năm sinh") &&
+              isSubmit
+                ? true
+                : false
+            }
           >
             <option value={null}>Chọn năm sinh</option>
             {Array.from({ length: 124 }, (_, i) => i + 1900).map(
@@ -193,7 +215,12 @@ const Info = () => {
           <Form.Select
             value={form.school}
             onChange={(e) => setForm({ ...form, school: e.target.value })}
-            isInvalid={form.school === "" && isSubmit ? true : false}
+            isInvalid={
+              (form.school === "" || form.school === "Chọn trình độ") &&
+              isSubmit
+                ? true
+                : false
+            }
           >
             <option value={null}>Chọn trình độ</option>
             {school.map((item, index) => (
@@ -212,7 +239,12 @@ const Info = () => {
           <Form.Select
             value={form.major}
             onChange={(e) => setForm({ ...form, major: e.target.value })}
-            isInvalid={form.major === "" && isSubmit ? true : false}
+            isInvalid={
+              (form.major === "" || form.major === "Chọn chuyên ngành") &&
+              isSubmit
+                ? true
+                : false
+            }
           >
             <option value={null}>Chọn chuyên ngành</option>
             {major.map((item, index) => (
@@ -231,7 +263,12 @@ const Info = () => {
           <Form.Select
             value={form.jobTitle}
             onChange={(e) => setForm({ ...form, jobTitle: e.target.value })}
-            isInvalid={form.jobTitle === "" && isSubmit ? true : false}
+            isInvalid={
+              (form.jobTitle === "" || form.jobTitle === "Chọn chức danh") &&
+              isSubmit
+                ? true
+                : false
+            }
           >
             <option value={null}>Chọn chức danh</option>
             {form.major === "Kinh doanh dịch vụ"
